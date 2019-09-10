@@ -40,7 +40,6 @@ exports.delete_completed_todo = (req, res) => {
 };
 
 exports.update_todo = (req, res) => {
-  console.log(req.body);
   Todo.findOneAndUpdate(
     { _id: req.params.todo },
     { $set: req.body },
@@ -54,7 +53,6 @@ exports.update_todo = (req, res) => {
 };
 
 exports.all_completed = (req, res) => {
-  console.log("completed", req.body);
   Todo.updateMany({}, { $set: { done: req.body.done } }, (err, todos) => {
     if (err) return console.log(err);
     Todo.find({}, (err, todos) => {
